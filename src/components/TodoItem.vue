@@ -18,10 +18,7 @@
     <div class="todo-item-view">
       <div class="todo-content">
         <!-- TODO: Implement checkbox functionality -->
-        <input
-          type="checkbox"
-          class="todo-checkbox"
-        />
+        <input type="checkbox" class="todo-checkbox" />
         <div class="todo-details">
           <!-- TODO: Add double-click event for editing -->
           <span class="todo-title">Example Todo Item</span>

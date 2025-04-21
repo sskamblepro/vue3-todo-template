@@ -5,6 +5,7 @@ This is a training template for learning Vue 3 with the Composition API. The tem
 ## Project Goal
 
 Build a fully functional Todo application with the following features:
+
 - Add new todos
 - Delete todos
 - Toggle todo completion status
@@ -16,11 +17,13 @@ Build a fully functional Todo application with the following features:
 ## Getting Started
 
 1. Install dependencies:
+
 ```bash
 npm install
 ```
 
 2. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -30,6 +33,7 @@ npm run dev
 Follow these steps to implement the functionality:
 
 ### 1. App.vue
+
 - Create state management for todos using ref()
 - Implement loading todos from localStorage
 - Implement saving todos using watchEffect
@@ -39,17 +43,20 @@ Follow these steps to implement the functionality:
 - Implement clear completed functionality
 
 ### 2. TodoForm.vue
+
 - Create state for new todo input
 - Define emit for add-todo event
 - Implement form submission
 
 ### 3. TodoList.vue
+
 - Define props for todos array
 - Define emits for todo operations
 - Implement event handlers
 - Loop through todos to render TodoItem components
 
 ### 4. TodoItem.vue
+
 - Define props for individual todo objects
 - Define emits for todo operations
 - Implement edit mode toggling
