@@ -1,72 +1,26 @@
 <script setup>
-import { ref, computed, watchEffect, onMounted } from "vue";
+// Imports should be kept so trainees know what to import
 import TodoForm from "./components/TodoForm.vue";
 import TodoList from "./components/TodoList.vue";
 
 // State management for todos
-const todos = ref([]);
-const filter = ref("all"); // all, active, completed
+// TODO: Create state management for todos using ref()
 
-// Load todos from localStorage
-onMounted(() => {
-  const savedTodos = localStorage.getItem("vue3-todos");
-  if (savedTodos) {
-    todos.value = JSON.parse(savedTodos);
-  }
-});
+// TODO: Implement loading todos from localStorage
 
-// Save todos to localStorage whenever they change
-watchEffect(() => {
-  localStorage.setItem("vue3-todos", JSON.stringify(todos.value));
-});
+// TODO: Implement saving todos to localStorage using watchEffect
 
-// Computed property for filtered todos
-const filteredTodos = computed(() => {
-  if (filter.value === "active") {
-    return todos.value.filter((todo) => !todo.completed);
-  } else if (filter.value === "completed") {
-    return todos.value.filter((todo) => todo.completed);
-  }
-  return todos.value;
-});
+// TODO: Create a computed property for filtered todos
 
-// Add a new todo
-const addTodo = (title) => {
-  if (title.trim()) {
-    todos.value.push({
-      id: Date.now(),
-      title,
-      completed: false,
-      createdAt: new Date().toISOString(),
-    });
-  }
-};
+// TODO: Implement adding a new todo
 
-// Delete a todo
-const deleteTodo = (id) => {
-  todos.value = todos.value.filter((todo) => todo.id !== id);
-};
+// TODO: Implement deleting a todo
 
-// Toggle todo completion status
-const toggleTodo = (id) => {
-  const todo = todos.value.find((todo) => todo.id === id);
-  if (todo) {
-    todo.completed = !todo.completed;
-  }
-};
+// TODO: Implement toggling todo completion status
 
-// Edit todo title
-const editTodo = (id, newTitle) => {
-  const todo = todos.value.find((todo) => todo.id === id);
-  if (todo && newTitle.trim()) {
-    todo.title = newTitle;
-  }
-};
+// TODO: Implement editing todo title
 
-// Clear all completed todos
-const clearCompleted = () => {
-  todos.value = todos.value.filter((todo) => !todo.completed);
-};
+// TODO: Implement clearing completed todos
 </script>
 
 <template>
@@ -77,49 +31,25 @@ const clearCompleted = () => {
       </header>
 
       <main>
-        <TodoForm @add-todo="addTodo" />
+        <!-- TODO: Implement TodoForm with add-todo event -->
+        <TodoForm />
 
         <div class="filters">
-          <button @click="filter = 'all'" :class="{ active: filter === 'all' }">
-            All
-          </button>
-          <button
-            @click="filter = 'active'"
-            :class="{ active: filter === 'active' }"
-          >
-            Active
-          </button>
-          <button
-            @click="filter = 'completed'"
-            :class="{ active: filter === 'completed' }"
-          >
-            Completed
-          </button>
-          <button
-            class="clear"
-            @click="clearCompleted"
-            v-if="todos.some((todo) => todo.completed)"
-          >
-            Clear completed
-          </button>
+          <!-- TODO: Implement filter buttons with active classes -->
+          <button>All</button>
+          <button>Active</button>
+          <button>Completed</button>
+          <button class="clear">Clear completed</button>
         </div>
 
-        <TodoList
-          :todos="filteredTodos"
-          @delete-todo="deleteTodo"
-          @toggle-todo="toggleTodo"
-          @edit-todo="editTodo"
-        />
+        <!-- TODO: Implement TodoList with events -->
+        <TodoList :todos="[]" />
 
-        <div class="info" v-if="todos.length > 0">
-          <p>
-            {{ filteredTodos.length }} items{{
-              filter !== "all" ? " " + filter : ""
-            }}
-          </p>
+        <div class="info">
+          <p>0 items</p>
         </div>
 
-        <div class="empty-state" v-else>
+        <div class="empty-state">
           <p>No todos yet. Add one above!</p>
         </div>
       </main>

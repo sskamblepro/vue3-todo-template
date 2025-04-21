@@ -1,35 +1,19 @@
 <script setup>
 import TodoItem from "./TodoItem.vue";
 
-// Define props
-const props = defineProps({
-  todos: {
-    type: Array,
-    required: true,
-  },
-});
+// TODO: Define props for todos
 
-// Define emits
-const emit = defineEmits(["delete-todo", "toggle-todo", "edit-todo"]);
+// TODO: Define emits for delete-todo, toggle-todo, and edit-todo
 
-// Handlers to forward events from TodoItem
-const handleDelete = (id) => emit("delete-todo", id);
-const handleToggle = (id) => emit("toggle-todo", id);
-const handleEdit = (id, newTitle) => emit("edit-todo", id, newTitle);
+// TODO: Implement event handlers for TodoItem events
 </script>
 
 <template>
   <div class="todo-list-container">
-    <transition-group name="todo-list" tag="ul" class="todo-list">
-      <TodoItem
-        v-for="todo in todos"
-        :key="todo.id"
-        :todo="todo"
-        @delete-todo="handleDelete"
-        @toggle-todo="handleToggle"
-        @edit-todo="handleEdit"
-      />
-    </transition-group>
+    <ul class="todo-list">
+      <!-- TODO: Implement todo list rendering with TodoItem component -->
+      <TodoItem />
+    </ul>
   </div>
 </template>
 

@@ -1,5 +1,63 @@
-# Vue 3 + Vite
+# Vue 3 Todo App - Training Template
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This is a training template for learning Vue 3 with the Composition API. The template provides all the necessary styling and structure, but the functionality has been stripped out for training purposes.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## Project Goal
+
+Build a fully functional Todo application with the following features:
+- Add new todos
+- Delete todos
+- Toggle todo completion status
+- Edit existing todos
+- Filter todos (all, active, completed)
+- Clear completed todos
+- Persist todos to localStorage
+
+## Getting Started
+
+1. Install dependencies:
+```bash
+npm install
+```
+
+2. Start the development server:
+```bash
+npm run dev
+```
+
+## Implementation Tasks
+
+Follow these steps to implement the functionality:
+
+### 1. App.vue
+- Create state management for todos using ref()
+- Implement loading todos from localStorage
+- Implement saving todos using watchEffect
+- Create computed property for filtered todos
+- Implement todo CRUD operations (Create, Read, Update, Delete)
+- Implement filter functionality
+- Implement clear completed functionality
+
+### 2. TodoForm.vue
+- Create state for new todo input
+- Define emit for add-todo event
+- Implement form submission
+
+### 3. TodoList.vue
+- Define props for todos array
+- Define emits for todo operations
+- Implement event handlers
+- Loop through todos to render TodoItem components
+
+### 4. TodoItem.vue
+- Define props for individual todo objects
+- Define emits for todo operations
+- Implement edit mode toggling
+- Implement date formatting
+- Handle todo actions (toggle, edit, delete)
+
+## Learning Resources
+
+- [Vue 3 Documentation](https://vuejs.org/guide/introduction.html)
+- [Vue 3 Composition API](https://vuejs.org/api/composition-api-setup.html)
+- [Vue 3 Template Syntax](https://vuejs.org/guide/essentials/template-syntax.html)

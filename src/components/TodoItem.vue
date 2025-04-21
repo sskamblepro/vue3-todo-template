@@ -1,102 +1,48 @@
 <script setup>
-import { ref, nextTick } from "vue";
+// TODO: Import necessary Vue functions
 
-// Define props
-const props = defineProps({
-  todo: {
-    type: Object,
-    required: true,
-  },
-});
+// TODO: Define props for todo item
 
-// Define emits
-const emit = defineEmits(["delete-todo", "toggle-todo", "edit-todo"]);
+// TODO: Define emits for delete-todo, toggle-todo, and edit-todo events
 
-// Local state for edit mode
-const isEditing = ref(false);
-const editedTitle = ref(props.todo.title);
-const editInput = ref(null);
+// TODO: Implement local state for edit mode
 
-// Toggle edit mode
-const startEditing = () => {
-  isEditing.value = true;
-  editedTitle.value = props.todo.title;
+// TODO: Implement methods for edit functionality
 
-  // Focus the input after DOM update
-  nextTick(() => {
-    editInput.value.focus();
-  });
-};
-
-// Save edited todo
-const saveEdit = () => {
-  if (editedTitle.value.trim() !== props.todo.title) {
-    emit("edit-todo", props.todo.id, editedTitle.value);
-  }
-  isEditing.value = false;
-};
-
-// Cancel edit mode
-const cancelEdit = () => {
-  isEditing.value = false;
-  editedTitle.value = props.todo.title;
-};
-
-// Format date
-const formatDate = (dateString) => {
-  const options = {
-    month: "short",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  };
-  return new Date(dateString).toLocaleDateString(undefined, options);
-};
+// TODO: Implement date formatting
 </script>
 
 <template>
-  <li class="todo-item" :class="{ completed: todo.completed }">
+  <li class="todo-item">
     <!-- View Mode -->
-    <div v-if="!isEditing" class="todo-item-view">
+    <div class="todo-item-view">
       <div class="todo-content">
+        <!-- TODO: Implement checkbox functionality -->
         <input
           type="checkbox"
-          :checked="todo.completed"
-          @change="emit('toggle-todo', todo.id)"
           class="todo-checkbox"
         />
-        <div class="todo-details" @dblclick="startEditing">
-          <span class="todo-title">{{ todo.title }}</span>
-          <small class="todo-date" v-if="todo.createdAt">
-            {{ formatDate(todo.createdAt) }}
-          </small>
+        <div class="todo-details">
+          <!-- TODO: Add double-click event for editing -->
+          <span class="todo-title">Example Todo Item</span>
+          <!-- TODO: Implement date display -->
+          <small class="todo-date">Apr 21</small>
         </div>
       </div>
       <div class="todo-actions">
-        <button class="edit-btn" @click="startEditing" title="Edit todo">
-          ✏️
-        </button>
-        <button
-          class="delete-btn"
-          @click="emit('delete-todo', todo.id)"
-          title="Delete todo"
-        >
-          🗑️
-        </button>
+        <!-- TODO: Implement edit and delete functionality -->
+        <button class="edit-btn" title="Edit todo">✏️</button>
+        <button class="delete-btn" title="Delete todo">🗑️</button>
       </div>
     </div>
 
     <!-- Edit Mode -->
-    <div v-else class="todo-item-edit">
+    <!-- TODO: Implement edit mode with conditional rendering -->
+    <!-- <div class="todo-item-edit">
       <input
-        ref="editInput"
-        v-model="editedTitle"
-        @blur="saveEdit"
-        @keyup.enter="saveEdit"
-        @keyup.esc="cancelEdit"
         class="edit-input"
       />
-    </div>
+    </div> -->
   </li>
 </template>
 

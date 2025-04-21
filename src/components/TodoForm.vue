@@ -1,31 +1,23 @@
 <script setup>
-import { ref } from "vue";
+// TODO: Import necessary Vue functions
 
-// Define emits
-const emit = defineEmits(["add-todo"]);
+// TODO: Define emits for add-todo event
 
-// Local state
-const newTodo = ref("");
+// TODO: Create reactive state for new todo
 
-// Add todo method
-const submitTodo = () => {
-  emit("add-todo", newTodo.value);
-  newTodo.value = ""; // Clear input after submitting
-};
+// TODO: Implement submit todo method
 </script>
 
 <template>
-  <form @submit.prevent="submitTodo" class="todo-form">
+  <form class="todo-form">
+    <!-- TODO: Implement form submission and input binding -->
     <input
-      v-model="newTodo"
       type="text"
       placeholder="What needs to be done?"
       autofocus
       class="todo-input"
     />
-    <button type="submit" class="add-button" :disabled="!newTodo.trim()">
-      Add
-    </button>
+    <button type="submit" class="add-button">Add</button>
   </form>
 </template>
 
@@ -46,16 +38,16 @@ const submitTodo = () => {
   transition: border-color 0.2s ease;
   outline: none;
   background-color: var(--bg-color);
-  color: #000000; /* Changed to black */
+  color: #000000;
 }
 
 .todo-input::placeholder {
-  color: rgba(0, 0, 0, 0.5); /* Changed to semi-transparent black */
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .add-button {
   background-color: var(--primary-color);
-  color: white; /* Keep white for contrast on green background */
+  color: white;
   border: none;
   padding: 0.75rem 1.5rem;
   font-weight: 600;
