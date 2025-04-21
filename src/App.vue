@@ -8,7 +8,7 @@ import TodoList from "./components/TodoList.vue";
 
 // TODO: Implement loading todos from localStorage
 
-// TODO: Implement saving todos to localStorage using watchEffect
+// TODO: Implement saving todos to localStorage
 
 // TODO: Create a computed property for filtered todos
 
