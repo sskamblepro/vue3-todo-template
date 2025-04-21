@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watchEffect, onMounted } from "vue";
+import { ref, computed, watch, onMounted } from "vue";
 import TodoForm from "./components/TodoForm.vue";
 import TodoList from "./components/TodoList.vue";
 
@@ -16,9 +16,13 @@ onMounted(() => {
 });
 
 // Save todos to localStorage whenever they change
-watchEffect(() => {
-  localStorage.setItem("vue3-todos", JSON.stringify(todos.value));
-});
+watch(
+  todos,
+  () => {
+    localStorage.setItem("vue3-todos", JSON.stringify(todos.value));
+  },
+  { deep: true }
+);
 
 // Computed property for filtered todos
 const filteredTodos = computed(() => {
